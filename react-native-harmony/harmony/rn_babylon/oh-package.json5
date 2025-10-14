@@ -1,0 +1,13 @@
+{
+  license: '',
+  devDependencies: {},
+  author: '',
+  name: "bl",
+  description: '',
+  type: 'module',
+  version: '0.0.1-0.0.1',
+  main: 'index.ets',
+  dependencies: {
+    "@rnoh/react-native-openharmony": "^0.72.58",
+  },
+}
