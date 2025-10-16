@@ -4,6 +4,9 @@ set(CMAKE_VERBOSE_MAKEFILE on)
 # Configure Babylon Native to use JSI
 set(NAPI_JAVASCRIPT_ENGINE "JSI" CACHE STRING "The JavaScript engine to power N-API" FORCE)
 
+# For error: unknown type name 'napi_type_tag'......
+add_definitions(-DNAPI_VERSION=10)
+
 set(BABYLON_REACT_NATIVE_SHARED_DIR "${NODE_MODULES}/@react-native-oh-tpl/babylonjs-react-native/shared")
 
 include(${BABYLON_REACT_NATIVE_SHARED_DIR}/CMakeLists.txt)
