@@ -1,0 +1,11 @@
+[
+    {
+        "Name": "BabylonReactNative",
+        "License": "MIT License",
+        "License File": " LICENSE ",
+        "Version Number": "1.8.6",
+        "Owner" : "xiafeng@huawei.com",
+        "Upstream URL": "https://github.com/BabylonJS/BabylonReactNative",
+        "Description": "Babylon React Native brings the power and flexibility of Babylon.js into a React Native environment via Babylon Native."
+    }
+]
