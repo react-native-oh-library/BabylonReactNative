@@ -32,9 +32,9 @@ namespace rnoh {
     protected:
         facebook::jsi::Object createNativeProps(facebook::jsi::Runtime &rt) override {
             auto object = ViewComponentJSIBinder::createNativeProps(rt);
-            object.setProperty(rt, "isTransparent", "boolean");
-            object.setProperty(rt, "antiAliasing", "number");
-            object.setProperty(rt, "androidView", "string");
+            object.setProperty(rt, "isTransparent", false);
+            object.setProperty(rt, "antiAliasing", 0);
+            object.setProperty(rt, "androidView", "");
             return object;
         }
 
