@@ -34,10 +34,10 @@ namespace rnoh {
         
         BabylonNative::Dispatcher createJsDispatcher(Context context) {
             return [context](std::function<void()> job) {
-                if (!context.taskExecutor) {
+                if (!context.jsInvoker) {
                     return;
                 }
-                context.taskExecutor->runTask(TaskThread::JS, [job = std::move(job)]() { job(); });
+                context.jsInvoker->invokeAsync([job = std::move(job)](){ job(); });
             };
         }
 
