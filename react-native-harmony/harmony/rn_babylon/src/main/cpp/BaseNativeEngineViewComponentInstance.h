@@ -21,18 +21,18 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_RNCNATIVEENGINEVIEWCOMPONENTINSTANCE_H
-#define RN_BABYLON_SRC_MAIN_CPP_RNCNATIVEENGINEVIEWCOMPONENTINSTANCE_H
+#pragma once
 
 #include "RNCEngineNode.h"
 #include "RNOH/CppComponentInstance.h"
 #include "ShadowNodes.h"
 
 namespace rnoh {
-    class RNCNativeEngineViewComponentInstance : public rnoh::CppComponentInstance<facebook::react::EngineViewShadowNode> {
+    class BaseNativeEngineViewComponentInstance
+      : public CppComponentInstance<facebook::react::NativeEngineViewShadowNode> {
     public:
-        RNCNativeEngineViewComponentInstance(Context context);
-        ~RNCNativeEngineViewComponentInstance();
+        BaseNativeEngineViewComponentInstance(Context context);
+        ~BaseNativeEngineViewComponentInstance();
         void onChildInserted(ComponentInstance::Shared const &childComponentInstance, std::size_t index) override;
         void onChildRemoved(ComponentInstance::Shared const &childComponentInstance) override;
         void onSnapshoting();
@@ -44,6 +44,4 @@ namespace rnoh {
     private:
         RNCEngineNode m_EngineNode;
     };
-}
-
-#endif
+} // namespace rnoh

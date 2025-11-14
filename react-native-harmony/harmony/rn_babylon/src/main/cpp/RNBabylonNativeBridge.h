@@ -21,46 +21,41 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_RNBABYLONNATIVEBRIDGE_H
-#define RN_BABYLON_SRC_MAIN_CPP_RNBABYLONNATIVEBRIDGE_H
+#pragma once
 
 #include "stdint.h"
 #include "BabylonNative.h"
 
 namespace rnoh {
-     void BabyUpdateView(OHNativeWindow *window, uint64_t width, uint64_t height) {
-          BabylonNative::UpdateView(window, width, height);
-     }
+    void BabyUpdateView(OHNativeWindow *window, uint64_t width, uint64_t height) {
+        BabylonNative::UpdateView(window, width, height);
+    }
+    
+    void BabyUpdateMSAA(int val) {
+        BabylonNative::UpdateMSAA(static_cast<uint8_t>(val));
+    }
 
-     void BabyUpdateMSAA(int val) {
-          BabylonNative::UpdateMSAA(static_cast<uint8_t>(val));
-     }
+    void BabyRenderView() {
+        BabylonNative::RenderView();
+    }
+    
+    void BabyResetView() {
+        BabylonNative::ResetView();
+    }
+    
+    void BabyUpdateXRView(OHNativeWindow *window) {
+        BabylonNative::UpdateXRView(window);
+    }
+    
+    bool BabyIsXRActive() {
+        return BabylonNative::IsXRActive();
+    }
+    
+    void BabySetTouchButtonState(int pointerId, bool isDown, float x, float y) {
+        BabylonNative::SetTouchButtonState(static_cast<uint32_t>(pointerId), isDown, static_cast<uint32_t>(x), static_cast<uint32_t>(y));
+    }
 
-     void BabyRenderView() {
-     BabylonNative::RenderView();
-     }
-
-     void BabyResetView() {
-          BabylonNative::ResetView();
-     }
-
-     void BabyUpdateXRView(OHNativeWindow *window) {
-          BabylonNative::UpdateXRView(window);
-     }
-
-     bool BabyIsXRActive() {
-          return BabylonNative::IsXRActive();
-     }
-
-     void BabySetTouchButtonState(int pointerId, bool isDown, float x, float y) {
-          BabylonNative::SetTouchButtonState(static_cast<uint32_t>(pointerId), isDown, static_cast<uint32_t>(x),
-          static_cast<uint32_t>(y));
-     }
-
-     void BabySetTouchPosition(int pointerId, float x, float y) {
-          BabylonNative::SetTouchPosition(static_cast<uint32_t>(pointerId), static_cast<uint32_t>(x),
-          static_cast<uint32_t>(y));
-     }
+    void BabySetTouchPosition(int pointerId, float x, float y) {
+        BabylonNative::SetTouchPosition(static_cast<uint32_t>(pointerId), static_cast<uint32_t>(x), static_cast<uint32_t>(y));
+    }
 };
-
-#endif

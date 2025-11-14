@@ -21,16 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_RNBABYLONMODULE_H
-#define RN_BABYLON_SRC_MAIN_CPP_RNBABYLONMODULE_H
+#pragma once
 
 #include "BabylonNative.h"
 #include "RNOH/ArkTSTurboModule.h"
 
 namespace rnoh {
-    class JSI_EXPORT RNBabylonModule : public ArkTSTurboModule {
+    class JSI_EXPORT NativeRNBabylonModule : public ArkTSTurboModule {
     public:
-        RNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name);
+        NativeRNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name);
         
         BabylonNative::Dispatcher createJsDispatcher(Context context) {
             return [context](std::function<void()> job) {
@@ -40,7 +39,7 @@ namespace rnoh {
                 context.jsInvoker->invokeAsync([job = std::move(job)](){ job(); });
             };
         }
-
+    
         BabylonNative::Dispatcher createMainDispatcher(Context context) {
             return [context](std::function<void()> job) {
                 if (!context.taskExecutor) {
@@ -50,6 +49,4 @@ namespace rnoh {
             };
         }
     };
-}
-
-#endif
+} // namespace rnoh

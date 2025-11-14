@@ -21,24 +21,20 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_EVENTEMITTERS_H
-#define RN_BABYLON_SRC_MAIN_CPP_EVENTEMITTERS_H
+#pragma once
 
-#include <jsi/jsi.h>
 #include <react/renderer/components/view/ViewEventEmitter.h>
 
 namespace facebook {
     namespace react {
-        class JSI_EXPORT EngineViewEventEmitter : public ViewEventEmitter {
+        class NativeEngineViewEventEmitter : public ViewEventEmitter {
         public:
             using ViewEventEmitter::ViewEventEmitter;
-
-            struct SnapshotEventData {
-                std::string data;
+            
+            struct OnSnapshotDataReturned {
+              std::string data;
             };
-            void onSnapshotDataReturned(SnapshotEventData value) const;
+            void onSnapshotDataReturned(OnSnapshotDataReturned value) const;
         };
-    }
-}
-
-#endif
+    } // namespace react
+} // namespace facebook

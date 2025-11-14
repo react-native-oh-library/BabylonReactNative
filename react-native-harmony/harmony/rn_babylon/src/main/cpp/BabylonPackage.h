@@ -21,16 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_BABYLONPACKAGE_H
-#define RN_BABYLON_SRC_MAIN_CPP_BABYLONPACKAGE_H
+#pragma once
 
-#include "RnohReactNativeHarmonyBabylonPackage.h"
+#include "BaseReactNativeOhTplBabylonjsReactNativeHarmonyPackage.h"
 
 namespace rnoh {
-class BabylonPackage : public RnohReactNativeHarmonyBabylonPackage {
-    using Super = RnohReactNativeHarmonyBabylonPackage;
-    using Super::Super;
-};
+    class BabylonPackage : public BaseReactNativeOhTplBabylonjsReactNativeHarmonyPackage {
+        using Super = BaseReactNativeOhTplBabylonjsReactNativeHarmonyPackage;
+        using Super::Super;
+    };
 } // namespace rnoh
-
-#endif

@@ -21,16 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_STATES_H
-#define RN_BABYLON_SRC_MAIN_CPP_STATES_H
+#pragma once
 
 namespace facebook {
     namespace react {
-        class EngineViewState {
+        class NativeEngineViewState {
         public:
-            EngineViewState() = default;
+            NativeEngineViewState() = default;
         };
-    }
-}
-
-#endif
+    } // namespace react
+} // namespace facebook

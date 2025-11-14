@@ -21,14 +21,15 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#include "RNBabylonModule.h"
+
+#include "NativeRNBabylonModule.h"
 
 namespace rnoh {
     using namespace facebook;
-
+    
     jsi::Value initialize(facebook::jsi::Runtime &rt, react::TurboModule &turboModule, const facebook::jsi::Value *args,
                         size_t count) {
-        auto self = static_cast<RNBabylonModule *>(&turboModule);
+        auto self = static_cast<NativeRNBabylonModule *>(&turboModule);
         auto jsDispatcher = self->createJsDispatcher(self->getContext());
         return facebook::react::createPromiseAsJSIValue(
             rt, [&jsDispatcher](jsi::Runtime &runtime, std::shared_ptr<facebook::react::Promise> promise) {
@@ -36,10 +37,10 @@ namespace rnoh {
                 promise->resolve(jsi::Value().null());
             });
     }
-
+    
     jsi::Value resetView(facebook::jsi::Runtime &rt, react::TurboModule &turboModule, const facebook::jsi::Value *args,
                         size_t count) {
-        auto self = static_cast<RNBabylonModule *>(&turboModule);
+        auto self = static_cast<NativeRNBabylonModule *>(&turboModule);
         return facebook::react::createPromiseAsJSIValue(
             rt, [self](jsi::Runtime &runtime, std::shared_ptr<facebook::react::Promise> promise) {
                 auto jsDispatcher = self->createMainDispatcher(self->getContext());
@@ -49,10 +50,8 @@ namespace rnoh {
                 });
             });
     }
-
-    RNBabylonModule::RNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name)
-        : ArkTSTurboModule(ctx, name) {
-
+    
+    NativeRNBabylonModule::NativeRNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name) : ArkTSTurboModule(ctx, name) {
         methodMap_ = {
             {"initialize", {0, rnoh::initialize}},
             {"resetView", {0, rnoh::resetView}},
@@ -61,4 +60,4 @@ namespace rnoh {
         };
         std::thread::id this_id = std::this_thread::get_id();
     }
-}
+} // namespace rnoh

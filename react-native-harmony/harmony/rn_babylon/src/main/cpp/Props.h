@@ -21,30 +21,23 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_PROPS_H
-#define RN_BABYLON_SRC_MAIN_CPP_PROPS_H
+#pragma once
 
-#include <jsi/jsi.h>
 #include <react/renderer/components/view/ViewProps.h>
 #include <react/renderer/core/PropsParserContext.h>
-#include <react/renderer/core/propsConversions.h>
-#include <react/renderer/graphics/Color.h>
-#include <string>
 
 namespace facebook {
     namespace react {
-        class JSI_EXPORT EngineViewProps final : public ViewProps {
+        class NativeEngineViewProps final : public ViewProps {
         public:
-            EngineViewProps() = default;
-            EngineViewProps(const PropsParserContext &context, const EngineViewProps &sourceProps, const RawProps &rawProps);
-
+            NativeEngineViewProps() = default;
+            NativeEngineViewProps(const PropsParserContext& context, const NativeEngineViewProps &sourceProps, const RawProps &rawProps);
+        
         #pragma mark - Props
-
-            bool isTransparent{true};
-            int32_t antiAliasing{0};
-            std::string androidView{""};
+        
+            bool isTransparent{false};
+            int antiAliasing{0};
+            std::string androidView{};
         };
-    }
-}
-
-#endif
+    } // namespace react
+} // namespace facebook

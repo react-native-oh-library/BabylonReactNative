@@ -21,8 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_SHADOWNODES_H
-#define RN_BABYLON_SRC_MAIN_CPP_SHADOWNODES_H
+#pragma once
 
 #include "EventEmitters.h"
 #include "Props.h"
@@ -32,15 +31,15 @@
 
 namespace facebook {
     namespace react {
-    JSI_EXPORT extern const char EngineViewComponentName[];
-
-    using EngineViewShadowNode = ConcreteViewShadowNode<
-        EngineViewComponentName,
-        EngineViewProps,
-        EngineViewEventEmitter,
-        EngineViewState
-    >;
-    }
-}
-
-#endif
+        JSI_EXPORT extern const char NativeEngineViewComponentName[];
+        
+        /*
+         * `ShadowNode` for <NativeEngineView> component.
+         */
+        using NativeEngineViewShadowNode = ConcreteViewShadowNode<
+            NativeEngineViewComponentName,
+            NativeEngineViewProps,
+            NativeEngineViewEventEmitter,
+            NativeEngineViewState>;
+    } // namespace react
+} // namespace facebook
