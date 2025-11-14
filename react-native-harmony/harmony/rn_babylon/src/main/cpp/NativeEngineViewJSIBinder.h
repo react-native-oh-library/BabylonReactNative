@@ -21,10 +21,8 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_NATIVEENGINEVIEWJSIBINDER_H
-#define RN_BABYLON_SRC_MAIN_CPP_NATIVEENGINEVIEWJSIBINDER_H
+#pragma once
 
-#include "RNOH/BaseComponentJSIBinder.h"
 #include "RNOHCorePackage/ComponentBinders/ViewComponentJSIBinder.h"
 
 namespace rnoh {
@@ -32,29 +30,21 @@ namespace rnoh {
     protected:
         facebook::jsi::Object createNativeProps(facebook::jsi::Runtime &rt) override {
             auto object = ViewComponentJSIBinder::createNativeProps(rt);
-            object.setProperty(rt, "isTransparent", false);
-            object.setProperty(rt, "antiAliasing", 0);
-            object.setProperty(rt, "androidView", "");
+            object.setProperty(rt, "isTransparent", true);
+            object.setProperty(rt, "antiAliasing", true);
+            object.setProperty(rt, "androidView", true);
             return object;
         }
-
-        facebook::jsi::Object createCommands(facebook::jsi::Runtime &rt) override {
-            auto commands = ViewComponentJSIBinder::createCommands(rt);
-            commands.setProperty(rt, "takeSnapshot", "takeSnapshot");
-            return commands;
-        }
-
+    
         facebook::jsi::Object createBubblingEventTypes(facebook::jsi::Runtime &rt) override {
             facebook::jsi::Object events(rt);
             return events;
         }
-
+    
         facebook::jsi::Object createDirectEventTypes(facebook::jsi::Runtime &rt) override {
             facebook::jsi::Object events(rt);
             events.setProperty(rt, "topSnapshotDataReturned", createDirectEvent(rt, "onSnapshotDataReturned"));
             return events;
         }
     };
-}
-
-#endif
+} // namespace rnoh

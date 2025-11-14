@@ -21,8 +21,7 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_RNCENGINENODE_H
-#define RN_BABYLON_SRC_MAIN_CPP_RNCENGINENODE_H
+#pragma once
 
 #include "RNOH/arkui/ArkUINode.h"
 #include <ace/xcomponent/native_interface_xcomponent.h>
@@ -77,5 +76,3 @@ namespace rnoh {
         static inline std::mutex s_Mutex;
     };
 }
-
-#endif

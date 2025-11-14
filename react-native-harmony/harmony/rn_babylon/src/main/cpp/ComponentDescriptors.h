@@ -21,16 +21,13 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
-#ifndef RN_BABYLON_SRC_MAIN_CPP_COMPONENTDESCRIPTORS_H
-#define RN_BABYLON_SRC_MAIN_CPP_COMPONENTDESCRIPTORS_H
+#pragma once
 
 #include "ShadowNodes.h"
 #include <react/renderer/core/ConcreteComponentDescriptor.h>
 
 namespace facebook {
     namespace react {
-        using EngineViewComponentDescriptor = ConcreteComponentDescriptor<EngineViewShadowNode>;
-    }
-}
-
-#endif
+        using NativeEngineViewComponentDescriptor = ConcreteComponentDescriptor<NativeEngineViewShadowNode>;
+    } // namespace react
+} // namespace facebook

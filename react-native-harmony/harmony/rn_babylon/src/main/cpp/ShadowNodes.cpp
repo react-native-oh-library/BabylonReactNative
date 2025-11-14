@@ -21,10 +21,11 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 #include "ShadowNodes.h"
 
 namespace facebook {
     namespace react {
-        extern const char EngineViewComponentName[] = "NativeEngineView";
-    }
-}
+        extern const char NativeEngineViewComponentName[] = "NativeEngineView";
+    } // namespace react
+} // namespace facebook

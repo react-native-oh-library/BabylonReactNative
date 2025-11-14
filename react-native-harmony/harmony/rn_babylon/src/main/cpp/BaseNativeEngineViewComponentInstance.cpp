@@ -21,33 +21,33 @@
  * OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
  * SOFTWARE.
  */
+
 #include <vector>
 #include <string>
 #include <multimedia/image_framework/image/pixelmap_native.h>
 #include <multimedia/image_framework/image/image_packer_native.h>
-#include "RNCNativeEngineViewComponentInstance.h"
+#include "BaseNativeEngineViewComponentInstance.h"
 
 namespace rnoh {
-    RNCNativeEngineViewComponentInstance::RNCNativeEngineViewComponentInstance(Context context)
+    BaseNativeEngineViewComponentInstance::BaseNativeEngineViewComponentInstance(Context context)
         : CppComponentInstance(std::move(context)) {}
 
-    RNCNativeEngineViewComponentInstance::~RNCNativeEngineViewComponentInstance() {}
+    BaseNativeEngineViewComponentInstance::~BaseNativeEngineViewComponentInstance() {}
 
-    void RNCNativeEngineViewComponentInstance::onChildInserted(ComponentInstance::Shared const &childComponentInstance,
+    void BaseNativeEngineViewComponentInstance::onChildInserted(ComponentInstance::Shared const &childComponentInstance,
                                                             std::size_t index) {
         CppComponentInstance::onChildInserted(childComponentInstance, index);
-        auto mWidth = childComponentInstance->getLayoutMetrics().frame.size.width;
     }
 
-    void RNCNativeEngineViewComponentInstance::onChildRemoved(ComponentInstance::Shared const &childComponentInstance) {
+    void BaseNativeEngineViewComponentInstance::onChildRemoved(ComponentInstance::Shared const &childComponentInstance) {
         CppComponentInstance::onChildRemoved(childComponentInstance);
     };
 
-    RNCEngineNode &RNCNativeEngineViewComponentInstance::getLocalRootArkUINode() {
+    RNCEngineNode &BaseNativeEngineViewComponentInstance::getLocalRootArkUINode() {
         return m_EngineNode;
     }
 
-    void RNCNativeEngineViewComponentInstance::onPropsChanged(SharedConcreteProps const &props) {
+    void BaseNativeEngineViewComponentInstance::onPropsChanged(SharedConcreteProps const &props) {
         CppComponentInstance::onPropsChanged(props);
         if (props == nullptr) {
             return;
@@ -66,7 +66,7 @@ namespace rnoh {
         m_EngineNode.setAndroidView(props->androidView);
     }
 
-    void RNCNativeEngineViewComponentInstance::onSnapshotDataReturned(std::string data) {
+    void BaseNativeEngineViewComponentInstance::onSnapshotDataReturned(std::string data) {
         if (m_eventEmitter) {
             DLOG(INFO) << "onSnapshotDataReturned send data";
             m_eventEmitter->onSnapshotDataReturned({data});
@@ -123,7 +123,7 @@ namespace rnoh {
         return ret;
     }
 
-    void RNCNativeEngineViewComponentInstance::onSnapshoting() {
+    void BaseNativeEngineViewComponentInstance::onSnapshoting() {
         OH_PixelmapNative *pixelmap = nullptr;
         OH_Pixelmap_ImageInfo *imageInfo = nullptr;
         OH_ImagePackerNative *imagePacker = nullptr;
@@ -243,11 +243,10 @@ namespace rnoh {
         this->onSnapshotDataReturned(base64Result);
     };
 
-    void RNCNativeEngineViewComponentInstance::handleCommand(std::string const &commandName, folly::dynamic const &args) {
+    void BaseNativeEngineViewComponentInstance::handleCommand(std::string const &commandName, folly::dynamic const &args) {
         DLOG(INFO) << "handleCommand:" << commandName;
         if (commandName == "takeSnapshot") {
-            this->onSnapshoting();
+        this->onSnapshoting();
         }
-    };
-
-};
+    }
+} // namespace rnoh

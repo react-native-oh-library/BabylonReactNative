@@ -25,12 +25,12 @@
 
 namespace facebook {
     namespace react {
-        void EngineViewEventEmitter::onSnapshotDataReturned(SnapshotEventData event) const {
-            dispatchEvent("snapshotDataReturned", [event = std::move(event)](jsi::Runtime &runtime) {
-                auto payload = jsi::Object(runtime);
-                payload.setProperty(runtime, "data", event.data);
-                return payload;
+        void NativeEngineViewEventEmitter::onSnapshotDataReturned(OnSnapshotDataReturned $event) const {
+            dispatchEvent("snapshotDataReturned", [$event=std::move($event)](jsi::Runtime &runtime) {
+                auto $payload = jsi::Object(runtime);
+                $payload.setProperty(runtime, "data", $event.data);
+                return $payload;
             });
         }
-    }
-}
+    } // namespace react
+} // namespace facebook
