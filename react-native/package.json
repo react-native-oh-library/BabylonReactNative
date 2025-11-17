@@ -3,12 +3,7 @@
   "title": "React Native Babylon",
   "version": "0.0.1-0.0.1",
   "harmony": {
-    "alias": "@babylonjs/react-native",
-    "codegenConfig": {
-      "specPaths": [
-        "./NativeEngineView.tsx"
-      ]
-    }
+    "alias": "@babylonjs/react-native"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/",
