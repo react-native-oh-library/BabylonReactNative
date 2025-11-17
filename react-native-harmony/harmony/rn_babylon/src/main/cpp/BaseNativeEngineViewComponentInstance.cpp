@@ -57,12 +57,8 @@ namespace rnoh {
         DLOG(INFO) << "onPropsChanged isTransparent:" << props->isTransparent;
         DLOG(INFO) << "onPropsChanged androidView:" << props->androidView;
 
-        if (props->antiAliasing) {
-            m_EngineNode.setAntiAliasing(props->antiAliasing);
-        }
-        if (props->isTransparent) {
-            m_EngineNode.setIsTransparent(props->isTransparent);
-        }
+        m_EngineNode.setAntiAliasing(props->antiAliasing);
+        m_EngineNode.setIsTransparent(props->isTransparent);
         m_EngineNode.setAndroidView(props->androidView);
     }
 
