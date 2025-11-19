@@ -24,6 +24,7 @@
 
 #include <vector>
 #include <string>
+#include <EGL/egl.h>
 #include <multimedia/image_framework/image/pixelmap_native.h>
 #include <multimedia/image_framework/image/image_packer_native.h>
 #include "BaseNativeEngineViewComponentInstance.h"
@@ -47,6 +48,34 @@ namespace rnoh {
         return m_EngineNode;
     }
 
+    // 查询当前EGL环境下显卡支持的最大MSAA(多重采样抗锯齿)采样数
+    int BaseNativeEngineViewComponentInstance::getMaxMSAASamples() {
+        EGLDisplay display = eglGetDisplay(EGL_DEFAULT_DISPLAY);
+        eglInitialize(display, nullptr, nullptr);
+    
+        EGLint numConfigs = 0;
+        eglGetConfigs(display, nullptr, 0, &numConfigs);
+    
+        std::vector<EGLConfig> configs(numConfigs);
+        eglGetConfigs(display, configs.data(), numConfigs, &numConfigs);
+    
+        int maxSamples = 0;
+        for (int i = 0; i < numConfigs; i++) {
+            EGLint sampleBuffers = 0;
+            EGLint samples = 0;
+            eglGetConfigAttrib(display, configs[i], EGL_SAMPLE_BUFFERS, &sampleBuffers);
+            eglGetConfigAttrib(display, configs[i], EGL_SAMPLES, &samples);
+    
+            if (sampleBuffers > 0) {
+                if (samples > maxSamples) {
+                    maxSamples = samples;
+                }
+            }
+        }
+    
+        return maxSamples;
+    }
+
     void BaseNativeEngineViewComponentInstance::onPropsChanged(SharedConcreteProps const &props) {
         CppComponentInstance::onPropsChanged(props);
         if (props == nullptr) {
@@ -57,7 +86,14 @@ namespace rnoh {
         DLOG(INFO) << "onPropsChanged isTransparent:" << props->isTransparent;
         DLOG(INFO) << "onPropsChanged androidView:" << props->androidView;
 
-        m_EngineNode.setAntiAliasing(props->antiAliasing);
+        int maxMSAASamples = getMaxMSAASamples();
+        if (props->antiAliasing > maxMSAASamples) {
+            DLOG(WARNING) << "the maximum MSAA supported by the graphics card in the current EGL: " << maxMSAASamples;
+            m_EngineNode.setAntiAliasing(maxMSAASamples);
+        } else {
+            m_EngineNode.setAntiAliasing(props->antiAliasing);
+        }
+    
         m_EngineNode.setIsTransparent(props->isTransparent);
         m_EngineNode.setAndroidView(props->androidView);
     }

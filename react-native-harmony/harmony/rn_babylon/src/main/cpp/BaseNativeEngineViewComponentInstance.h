@@ -35,6 +35,7 @@ namespace rnoh {
         ~BaseNativeEngineViewComponentInstance();
         void onChildInserted(ComponentInstance::Shared const &childComponentInstance, std::size_t index) override;
         void onChildRemoved(ComponentInstance::Shared const &childComponentInstance) override;
+        int getMaxMSAASamples();
         void onSnapshoting();
         void onPropsChanged(SharedConcreteProps const &props) override;
         void handleCommand(std::string const &commandName, folly::dynamic const &args) override;
