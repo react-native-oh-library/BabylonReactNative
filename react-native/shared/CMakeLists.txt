@@ -1,8 +1,8 @@
 include(FetchContent)
 
 FetchContent_Declare(babylonnative
-    GIT_REPOSITORY https://gitee.com/louis-damon/BabylonNative.git
-    GIT_TAG 6a2069e0e705667463b4e7e9e41ab226ff1eb62d)
+    GIT_REPOSITORY https://gitee.com/openharmony-tpc-incubate/BabylonNative.git
+    GIT_TAG c21855b52b744e5c2d1e44dd0b5c1b4db047cd20)
 
 set(SHARED_INCLUDES
     "${CMAKE_CURRENT_LIST_DIR}")

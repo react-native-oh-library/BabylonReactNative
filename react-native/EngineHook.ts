@@ -216,6 +216,7 @@ export function useEngine(): Engine | undefined {
 
         (async () => {
             setEngine(engine = await ReactNativeEngine.tryCreateAsync(abortController.signal) ?? undefined);
+            console.log('useEngine: ReactNativeEngine.tryCreateAsync engine=', engine);
         })();
 
         return () => {
