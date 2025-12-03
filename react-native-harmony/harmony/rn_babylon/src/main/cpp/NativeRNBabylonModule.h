@@ -34,6 +34,7 @@ namespace rnoh {
         BabylonNative::Dispatcher createJsDispatcher(Context context) {
             return [context](std::function<void()> job) {
                 if (!context.jsInvoker) {
+                    DLOG(ERROR) << "context.jsInvoker is nullptr";
                     return;
                 }
                 context.jsInvoker->invokeAsync([job = std::move(job)](){ job(); });
@@ -43,6 +44,7 @@ namespace rnoh {
         BabylonNative::Dispatcher createMainDispatcher(Context context) {
             return [context](std::function<void()> job) {
                 if (!context.taskExecutor) {
+                    DLOG(ERROR) << "context.taskExecutor is nullptr";
                     return;
                 }
                 context.taskExecutor->runTask(TaskThread::MAIN, [job = std::move(job)]() { job(); });

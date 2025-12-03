@@ -43,6 +43,7 @@ namespace BabylonNative
     void SetTouchPosition(uint32_t pointerId, int32_t x, int32_t y);
 
     bool IsXRActive();
+    void SetRenderState(bool state);
 
 #if defined(__APPLE__) || defined(ANDROID) || defined(__OHOS__)
     void UpdateXRView(WindowType window);

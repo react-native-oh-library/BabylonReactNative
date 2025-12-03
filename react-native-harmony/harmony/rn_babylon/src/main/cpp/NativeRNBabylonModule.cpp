@@ -32,7 +32,8 @@ namespace rnoh {
         auto self = static_cast<NativeRNBabylonModule *>(&turboModule);
         auto jsDispatcher = self->createJsDispatcher(self->getContext());
         return facebook::react::createPromiseAsJSIValue(
-            rt, [&jsDispatcher](jsi::Runtime &runtime, std::shared_ptr<facebook::react::Promise> promise) {
+            rt, [jsDispatcher](jsi::Runtime &runtime, std::shared_ptr<facebook::react::Promise> promise) {
+                DLOG(INFO) << "BabylonNative::Initialize";
                 BabylonNative::Initialize(runtime, jsDispatcher);
                 promise->resolve(jsi::Value().null());
             });
@@ -43,10 +44,14 @@ namespace rnoh {
         auto self = static_cast<NativeRNBabylonModule *>(&turboModule);
         return facebook::react::createPromiseAsJSIValue(
             rt, [self](jsi::Runtime &runtime, std::shared_ptr<facebook::react::Promise> promise) {
-                auto jsDispatcher = self->createMainDispatcher(self->getContext());
-                jsDispatcher([promise]() {
+                auto mainDispatcher = self->createMainDispatcher(self->getContext());
+                auto jsDispatcher = self->createJsDispatcher(self->getContext());
+                mainDispatcher([promise, mainDispatcher, jsDispatcher]() {
+                	DLOG(INFO) << "BabylonNative::ResetView";
                     BabylonNative::ResetView();
-                    promise->resolve(jsi::Value().null());
+                    jsDispatcher([promise]() {
+                        promise->resolve(jsi::Value::null());
+                    });
                 });
             });
     }
