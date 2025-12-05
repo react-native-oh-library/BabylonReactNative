@@ -222,6 +222,7 @@ namespace rnoh {
         if (m_IsRendering) {
             return;
         }
+        SetRenderState(true);
         m_IsRendering = true;
         auto *nativeXComponent = OH_NativeXComponent_GetNativeXComponent(m_General_NodeHandle);
         OH_NativeXComponent_RegisterOnFrameCallback(nativeXComponent, onFrameCallback);
@@ -231,6 +232,7 @@ namespace rnoh {
         if (!m_IsRendering) {
             return;
         }
+        SetRenderState(false);
         m_IsRendering = false;
         auto *nativeXComponent = OH_NativeXComponent_GetNativeXComponent(m_General_NodeHandle);
         if (nativeXComponent) {

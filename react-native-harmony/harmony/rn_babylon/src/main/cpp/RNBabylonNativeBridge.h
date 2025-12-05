@@ -50,6 +50,10 @@ namespace rnoh {
     bool BabyIsXRActive() {
         return BabylonNative::IsXRActive();
     }
+
+    void SetRenderState(bool state) {
+        BabylonNative::SetRenderState(state);
+    }
     
     void BabySetTouchButtonState(int pointerId, bool isDown, float x, float y) {
         BabylonNative::SetTouchButtonState(static_cast<uint32_t>(pointerId), isDown, static_cast<uint32_t>(x), static_cast<uint32_t>(y));

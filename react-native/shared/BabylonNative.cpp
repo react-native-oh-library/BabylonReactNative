@@ -211,6 +211,11 @@ namespace BabylonNative
         {
             return *m_isXRActive;
         }
+    
+        void SetRenderState(bool state)
+        {
+            Babylon::Plugins::NativeEngine::SetRenderState(state);
+        }
 
 #if defined(__APPLE__) || defined(ANDROID) || defined(__OHOS__)
         void UpdateXRView(WindowType window)
@@ -401,6 +406,14 @@ namespace BabylonNative
         }
 
         return false;
+    }
+
+    void SetRenderState(bool state)
+    {
+        if (auto nativeModule{ g_nativeModule.lock() })
+        {
+            nativeModule->SetRenderState(state);
+        }
     }
 
 #if defined(__APPLE__) || defined(ANDROID) || defined(__OHOS__)

@@ -31,9 +31,13 @@
 
 namespace rnoh {
     BaseNativeEngineViewComponentInstance::BaseNativeEngineViewComponentInstance(Context context)
-        : CppComponentInstance(std::move(context)) {}
+        : CppComponentInstance(std::move(context)) {
+        DLOG(INFO) << "BaseNativeEngineViewComponentInstance";
+    }
 
-    BaseNativeEngineViewComponentInstance::~BaseNativeEngineViewComponentInstance() {}
+    BaseNativeEngineViewComponentInstance::~BaseNativeEngineViewComponentInstance() {
+        DLOG(INFO) << "~BaseNativeEngineViewComponentInstance";
+    }
 
     void BaseNativeEngineViewComponentInstance::onChildInserted(ComponentInstance::Shared const &childComponentInstance,
                                                             std::size_t index) {
