@@ -1,7 +1,7 @@
 {
   "name": "@react-native-oh-tpl/babylonjs-react-native",
   "title": "React Native Babylon",
-  "version": "0.0.1-0.0.1",
+  "version": "1.8.7-rc.1",
   "harmony": {
     "alias": "@babylonjs/react-native"
   },
