@@ -40,6 +40,7 @@ target_link_libraries(rnoh_babylon PUBLIC rnoh
                                      libnative_window.so
                                      libffrt.z.so
                                      ${EGL-lib} ${GLES-lib}
+                                     OHOSExtensions
                                      NativeInput
                                      NativeOptimizations
                                      GraphicsDevice

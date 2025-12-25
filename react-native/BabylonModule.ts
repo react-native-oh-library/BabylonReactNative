@@ -27,3 +27,11 @@ export async function ensureInitialized(): Promise<boolean> {
 export async function reset(): Promise<void> {
     return NativeRNBabylonModule.resetView();
 }
+
+export function pause(): void {
+    NativeRNBabylonModule.pause();
+}
+
+export function resume(): void {
+    NativeRNBabylonModule.resume();
+}
