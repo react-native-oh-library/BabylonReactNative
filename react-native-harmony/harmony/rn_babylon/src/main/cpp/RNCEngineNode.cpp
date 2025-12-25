@@ -248,10 +248,24 @@ namespace rnoh {
         m_View = view;
 
         if (transparent) {
-            // 设置XComponent背景透明 0x00000000
+            // 设置Stack容器背景透明
             ArkUI_NumberValue preparedColorValue[] = {{.u32 = 0x00000000}};
             ArkUI_AttributeItem colorItem = {preparedColorValue, sizeof(preparedColorValue) / sizeof(ArkUI_NumberValue)};
             NativeNodeApi::getInstance()->setAttribute(m_nodeHandle, NODE_BACKGROUND_COLOR, &colorItem);
+            
+            // 设置XComponent背景透明
+            ArkUI_NumberValue xcompColorValue[] = {{.u32 = 0x00000000}};
+            ArkUI_AttributeItem xcompColorItem = {xcompColorValue, sizeof(xcompColorValue) / sizeof(ArkUI_NumberValue)};
+            NativeNodeApi::getInstance()->setAttribute(m_General_NodeHandle, NODE_BACKGROUND_COLOR, &xcompColorItem);
+        } else {
+            // 非透明模式，恢复默认背景
+            ArkUI_NumberValue preparedColorValue[] = {{.u32 = 0xFF000000}};
+            ArkUI_AttributeItem colorItem = {preparedColorValue, sizeof(preparedColorValue) / sizeof(ArkUI_NumberValue)};
+            NativeNodeApi::getInstance()->setAttribute(m_nodeHandle, NODE_BACKGROUND_COLOR, &colorItem);
+            
+            ArkUI_NumberValue xcompColorValue[] = {{.u32 = 0xFF000000}};
+            ArkUI_AttributeItem xcompColorItem = {xcompColorValue, sizeof(xcompColorValue) / sizeof(ArkUI_NumberValue)};
+            NativeNodeApi::getInstance()->setAttribute(m_General_NodeHandle, NODE_BACKGROUND_COLOR, &xcompColorItem);
         }
 
         if (view == "SurfaceViewZTopMost") {              // 指定层级

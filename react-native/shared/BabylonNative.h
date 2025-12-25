@@ -49,6 +49,11 @@ namespace BabylonNative
     void UpdateXRView(WindowType window);
 #endif
 
+#if defined(__OHOS__)
+    void BabyPause();
+    void BabyResume();
+#endif
+
     extern const uint32_t LEFT_MOUSE_BUTTON_ID;
     extern const uint32_t MIDDLE_MOUSE_BUTTON_ID;
     extern const uint32_t RIGHT_MOUSE_BUTTON_ID;

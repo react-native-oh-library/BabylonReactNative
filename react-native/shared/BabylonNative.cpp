@@ -16,6 +16,7 @@
 #include <Babylon/Polyfills/Canvas.h>
 
 #include <DispatchFunction.h>
+#include <OHOSExtensions/Globals.h>
 
 namespace BabylonNative
 {
@@ -423,6 +424,16 @@ namespace BabylonNative
         {
             nativeModule->UpdateXRView(window);
         }
+    }
+#endif
+
+#if defined(__OHOS__)
+    void BabyPause() {
+        ohos::global::Pause();
+    }
+
+    void BabyResume() {
+        ohos::global::Resume();
     }
 #endif
 }

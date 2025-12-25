@@ -56,10 +56,24 @@ namespace rnoh {
             });
     }
     
+    jsi::Value pause(facebook::jsi::Runtime &rt, react::TurboModule &turboModule, const facebook::jsi::Value *args, size_t count) {
+        DLOG(INFO) << "BabylonNative::Pause";
+        BabylonNative::BabyPause();
+        return jsi::Value::undefined();
+    }
+    
+    jsi::Value resume(facebook::jsi::Runtime &rt, react::TurboModule &turboModule, const facebook::jsi::Value *args, size_t count) {
+        DLOG(INFO) << "BabylonNative::Resume";
+        BabylonNative::BabyResume();
+        return jsi::Value::undefined();
+    }
+    
     NativeRNBabylonModule::NativeRNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name) : ArkTSTurboModule(ctx, name) {
         methodMap_ = {
             {"initialize", {0, rnoh::initialize}},
             {"resetView", {0, rnoh::resetView}},
+            {"pause", {0, rnoh::pause}},
+            {"resume", {0, rnoh::resume}},
             ARK_METHOD_METADATA(addListener, 1),
             ARK_METHOD_METADATA(removeListeners, 1),
         };
