@@ -7,11 +7,11 @@ set(NAPI_JAVASCRIPT_ENGINE "JSI" CACHE STRING "The JavaScript engine to power N-
 # For error: unknown type name 'napi_type_tag'......
 add_definitions(-DNAPI_VERSION=10)
 
-set(BABYLON_REACT_NATIVE_SHARED_DIR "${NODE_MODULES}/@react-native-oh-tpl/babylonjs-react-native/shared")
+set(BABYLON_REACT_NATIVE_SHARED_DIR ${CMAKE_CURRENT_SOURCE_DIR}/shared)
 
 include(${BABYLON_REACT_NATIVE_SHARED_DIR}/CMakeLists.txt)
 
-add_subdirectory("${BABYLON_REACT_NATIVE_SHARED_DIR}" ./babaylonjsshared)
+add_subdirectory(${BABYLON_REACT_NATIVE_SHARED_DIR} ./babaylonjsshared)
 add_subdirectory(${babylonnative_SOURCE_DIR} ./babylonnaitve)
 
 file(GLOB_RECURSE rnoh_babylon_SRC CONFIGURE_DEPENDS *.cpp)
