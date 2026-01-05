@@ -1,6 +1,6 @@
 {
   "module": {
-    "name": "bl",
+    "name": "babylonjs",
     "type": "har",
     "deviceTypes": [
       "default"
