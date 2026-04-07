@@ -1,7 +1,7 @@
 {
   "name": "@react-native-oh-tpl/babylonjs-react-native-harmony",
   "title": "React Native Babylon for Harmony",
-  "version": "1.8.7-rc.3",
+  "version": "1.8.7",
   "description": "Babylon Native integration into React Native",
   "main": "index.ts",
   "scripts": {
