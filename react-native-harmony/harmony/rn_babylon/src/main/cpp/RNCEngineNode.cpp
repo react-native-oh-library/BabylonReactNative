@@ -61,7 +61,9 @@ namespace rnoh {
         DLOG(INFO) << "RNBabylon OnSurfaceDestroyed";
         auto node = getNode(component);
         if (node) {
-            static_cast<RNCEngineNode *>(node)->stopRenderLoop();
+            auto *engineNode = static_cast<RNCEngineNode *>(node);
+            engineNode->stopRenderLoop();
+            engineNode->UpdateView(nullptr, 0, 0);
         }
     }
 

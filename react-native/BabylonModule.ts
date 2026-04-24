@@ -1,9 +1,10 @@
+import { Platform } from 'react-native';
 import NativeRNBabylonModule from './NativeRNBabylonModule';
 
 declare const global: {
     nativeCallSyncHook: any;
 };
-const isRemoteDebuggingEnabled = !global.nativeCallSyncHook;
+const isRemoteDebuggingEnabled = (Platform.OS as string) === 'harmony' ? false : !global.nativeCallSyncHook;
 
 // This legacy React Native module is created by Babylon React Native, and is only used to bootstrap the JSI object creation.
 // This will likely be removed when the BabylonNative global object is eventually converted to a TurboModule.

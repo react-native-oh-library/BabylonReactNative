@@ -2,7 +2,7 @@
   license: '',
   devDependencies: {},
   author: '',
-  name: "@react-native-oh-tpl/babylonjs-react-native-harmony",
+  name: "@react-native-ohos/babylonjs-react-native-harmony",
   description: '',
   type: 'module',
   version: '1.8.7',

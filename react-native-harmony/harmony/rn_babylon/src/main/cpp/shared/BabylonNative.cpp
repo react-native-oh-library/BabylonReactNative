@@ -83,6 +83,13 @@ namespace BabylonNative
             m_graphicsConfig.Window = window;
             m_graphicsConfig.Width = width;
             m_graphicsConfig.Height = height;
+
+            if (window == nullptr || width == 0 || height == 0)
+            {
+                m_isRenderingEnabled = false;
+                return;
+            }
+
             UpdateGraphicsConfiguration();
         }
 
@@ -165,9 +172,13 @@ namespace BabylonNative
 
         void ResetView()
         {
-            if (g_graphicsDevice)
+            if (g_nativeCanvas)
             {
                 g_nativeCanvas->FlushGraphicResources();
+            }
+
+            if (g_graphicsDevice && m_graphicsConfig.Window != nullptr)
+            {
                 g_graphicsDevice->DisableRendering();
             }
 
