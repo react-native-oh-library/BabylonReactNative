@@ -31,23 +31,23 @@ namespace rnoh {
     public:
         NativeRNBabylonModule(const ArkTSTurboModule::Context ctx, const std::string name);
         
-        BabylonNative::Dispatcher createJsDispatcher(Context context) {
-            return [context](std::function<void()> job) {
-                if (!context.jsInvoker) {
-                    DLOG(ERROR) << "context.jsInvoker is nullptr";
+        BabylonNative::Dispatcher createJsDispatcher() {
+            return [this](std::function<void()> job) {
+                if (!m_ctx.jsInvoker) {
+                    DLOG(ERROR) << "m_ctx.jsInvoker is nullptr";
                     return;
                 }
-                context.jsInvoker->invokeAsync([job = std::move(job)](){ job(); });
+                m_ctx.jsInvoker->invokeAsync([job = std::move(job)](){ job(); });
             };
         }
     
-        BabylonNative::Dispatcher createMainDispatcher(Context context) {
-            return [context](std::function<void()> job) {
-                if (!context.taskExecutor) {
-                    DLOG(ERROR) << "context.taskExecutor is nullptr";
+        BabylonNative::Dispatcher createMainDispatcher() {
+            return [this](std::function<void()> job) {
+                if (!m_ctx.taskExecutor) {
+                    DLOG(ERROR) << "m_ctx.taskExecutor is nullptr";
                     return;
                 }
-                context.taskExecutor->runTask(TaskThread::MAIN, [job = std::move(job)]() { job(); });
+                m_ctx.taskExecutor->runTask(TaskThread::MAIN, [job = std::move(job)]() { job(); });
             };
         }
     };

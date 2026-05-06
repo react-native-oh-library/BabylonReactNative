@@ -22,7 +22,7 @@
  * SOFTWARE.
  */
 import type { UITurboModule, UITurboModuleContext } from '@rnoh/react-native-openharmony/ts';
-import { RNPackage, UITurboModuleFactory } from '@rnoh/react-native-openharmony/ts';
+import { RNOHPackage, UITurboModuleFactory } from '@rnoh/react-native-openharmony';
 import { RNBabylonModule } from './RNBabylonModule';
 import { TM } from "./namespace/ts"
 
@@ -39,7 +39,7 @@ class BabylonPackageTurboModulesFactory extends UITurboModuleFactory {
   }
 }
 
-export class BabylonPackage extends RNPackage {
+export class BabylonPackage extends RNOHPackage {
   createTurboModulesFactory(ctx: UITurboModuleContext): UITurboModuleFactory {
     return new BabylonPackageTurboModulesFactory(ctx);
   }
