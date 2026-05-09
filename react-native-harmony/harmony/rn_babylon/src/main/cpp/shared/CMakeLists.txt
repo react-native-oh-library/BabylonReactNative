@@ -2,7 +2,7 @@ include(FetchContent)
 
 FetchContent_Declare(babylonnative
     GIT_REPOSITORY https://gitee.com/openharmony-tpc-incubate/BabylonNative.git
-    GIT_TAG 5447726a5f717632f8dd2ef0b9ba4cf4efb3edc9)
+    GIT_TAG 8d8dec5644e8c20a77ffb5644c716ce5901b96d4)
 
 set(SHARED_INCLUDES
     "${CMAKE_CURRENT_LIST_DIR}")
