@@ -1,7 +1,7 @@
 {
   "name": "@react-native-ohos/babylonjs-react-native-harmony",
   "title": "React Native Babylon for Harmony",
-  "version": "1.9.7-rc.2",
+  "version": "1.9.7-beta.2",
   "description": "Babylon Native integration into React Native",
   "main": "index.ts",
   "scripts": {
