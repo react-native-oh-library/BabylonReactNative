@@ -5,7 +5,7 @@
   name: "@react-native-oh-tpl/babylonjs-react-native-harmony",
   description: '',
   type: 'module',
-  version: '1.8.7',
+  version: '1.8.8-rc.1',
   main: 'index.ets',
   dependencies: {
     "@rnoh/react-native-openharmony": "^0.72.58",
