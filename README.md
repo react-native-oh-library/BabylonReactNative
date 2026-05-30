@@ -1,13 +1,13 @@
-# @react-native-oh-tpl/babylonjs-react-native
-# @react-native-oh-tpl/babylonjs-react-native-harmony
+# @react-native-ohos/babylonjs-react-native
+# @react-native-ohos/babylonjs-react-native-harmony
 This project is based on  [BabylonReactNative](https://github.com/BabylonJS/BabylonReactNative)
 ## Documentation
 
-### @react-native-oh-tpl/babylonjs-react-native
+### @react-native-ohos/babylonjs-react-native
 [中文](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/zh-cn/babylonjs-react-native.md)
 [English](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/en/babylonjs-react-native.md)
 
-### @react-native-oh-tpl/babylonjs-react-native-harmony
+### @react-native-ohos/babylonjs-react-native-harmony
 [中文](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/zh-cn/babylonjs-react-native-harmony.md)
 [English](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/en/babylonjs-react-native-harmony.md)
 
