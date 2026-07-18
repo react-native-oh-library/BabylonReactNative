@@ -1,15 +1,13 @@
-# @react-native-ohos/babylonjs-react-native
-# @react-native-ohos/babylonjs-react-native-harmony
-This project is based on  [BabylonReactNative](https://github.com/BabylonJS/BabylonReactNative)
-## Documentation
+#  迁移声明
 
-### @react-native-ohos/babylonjs-react-native
-[中文](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/zh-cn/babylonjs-react-native.md)
-[English](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/en/babylonjs-react-native.md)
+- 本仓库已迁移至 GitCode：[CPF-RN/rntpc_BabylonReactNative](https://gitcode.com/CPF-RN/rntpc_BabylonReactNative)。
+- 包名已更改为 `@react-native-ohos/babylonjs-react-native` 和 `@react-native-ohos/babylonjs-react-native-harmony`，支持直接从 npm 下载。
+- 更多详情请查阅新仓库的 README 文件。
+- 本仓库旧版本的文档已归档：[链接](/doc/zh-cn.md)
 
-### @react-native-ohos/babylonjs-react-native-harmony
-[中文](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/zh-cn/babylonjs-react-native-harmony.md)
-[English](https://gitcode.com/OpenHarmony-RN/usage-docs/blob/master/en/babylonjs-react-native-harmony.md)
+# Migration Announcement
 
-## License
-This library is licensed under [The MIT License (MIT)](https://github.com/BabylonJS/BabylonReactNative/blob/master/LICENSE).
+- This repository has been migrated to GitCode：[CPF-RN/rntpc_BabylonReactNative](https://gitcode.com/CPF-RN/rntpc_BabylonReactNative)       
+- The package names have been changed to `@react-native-ohos/babylonjs-react-native` and `@react-native-ohos/babylonjs-react-native-harmony` and are now available for direct download from npm.
+- For more details, please refer to the README in the new repository.
+- Archived documentation for versions in this repository can be found here: [Link](/doc/en.md)
